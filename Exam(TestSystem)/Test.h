@@ -5,6 +5,7 @@
 #include<vector>
 #include<string>
 #include"Question.h"
+#include<fstream>
 
 using namespace std;
 
@@ -33,12 +34,18 @@ public:
 
 	void GetTestName()
 	{
+		string path = "tests.txt";
+		fstream data;
+		data.open(path, fstream::in | fstream::out | fstream::app);
 		cout << "Get test's name:";
 		getline(cin, name);
 	}
 
 	void createTest()
 	{
+		string path = "tests.txt";
+		fstream data;
+		data.open(path, fstream::in | fstream::out | fstream::app);
 		GetTestName();
 		bool continue_ = false;
 		do
@@ -48,6 +55,13 @@ public:
 			cin >> continue_;
 			cin.ignore();
 		} while (continue_);
+		data << this->name << endl;
+		data << this->questions.size() << endl;
+		for (size_t i = 0; i < questions.size(); i++)
+		{
+			data << i;
+		}
+		data.close();
 	}
 
 	void print()
