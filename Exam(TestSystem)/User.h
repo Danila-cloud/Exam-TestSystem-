@@ -15,26 +15,22 @@ protected:
 	int hashPass;
 
 public:
-	//virtual void menu() = 0;
-	//void addAcc() {
-	//	hash<string> Hash;
-	//	long long key;
-	//	ofstream out;
-	//	out.open("Accounts.txt", ios_base::app);
-	//	out << login << endl;
-	//	out.close();
-	//	key = Hash(login);
-	//	out.open(to_string(key) + ".txt");
-	//	out << key << endl;
-	//	key = Hash(pass);
-	//	out << to_string(key) << endl;
-	//	key = Hash(to_string(ADMIN));
-	//	out << key << endl;
-	//	out.close();
-	//}
 
 	void Register()
 	{
+		cout << "Please, enter your login: " << endl;
+		getline(cin, login);
+		cout << "Enter your password: " << endl;
+		hash<string> Pass;
+		getline(cin, Pass);
+		int hashPass = Pass;
+		ofstream out;
+		out.open("Accounts.txt", ios_base::app);
+		out << hashPass << endl;
+		out << login << endl;
+		out.close();
+		out << hashPass << endl;
+		out.close();
 
 	}
 	void Login()
@@ -45,10 +41,11 @@ public:
 
 class Student : public User
 {
-
+	void startTest();
 };
 
 class Admin : public User
 {
+	void createTest();
 
 };
