@@ -33,15 +33,36 @@ public:
 		return q;
 	}
 
-	void GetTestName()
+	void SetTestName()
 	{
 		cout << "Get test's name:";
 		getline(cin, name);
 	}
-	void GetCategoryName()
+	void SetCategoryName()
 	{
 		cout << "Get Category name:";
 		getline(cin, Category);
+		string path = "Categorys.txt";
+		ifstream ca;
+		ca.open(path);
+		string categ;
+		int h = 0;
+		while (!ca.eof())
+		{
+			ca >> categ;
+			if (categ == Category) {
+				h = h + 1;
+			}
+		}
+		ca.close();
+		if (h != 1) {
+			string path = "Categorys.txt";
+			ofstream ca;
+			ca.open("Categorys.txt", ios_base::app);
+			ca << this->Category;
+		}
+
+		
 	}
 
 	void createTest()
@@ -49,8 +70,8 @@ public:
 		string path = "tests.txt";
 		ofstream data;
 		//category
-		GetCategoryName();
-		GetTestName();
+		SetCategoryName();
+		SetTestName();
 		bool continue_ = false;
 		do
 		{

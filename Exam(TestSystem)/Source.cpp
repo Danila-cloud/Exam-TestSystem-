@@ -12,12 +12,12 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	//file();
-	App app;
-	app.menu();
+	//App app;
+	//app.menu();
 
-	//Test t;
-	//t.createTest();
-	//t.print();
+	Test t;
+	t.createTest();
+	t.print();
 
 	system("pause");
 }
