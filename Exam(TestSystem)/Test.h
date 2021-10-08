@@ -11,6 +11,7 @@ using namespace std;
 
 class Test
 {
+	string Category;
 	string name;
 	vector<Question> questions;
 
@@ -34,18 +35,21 @@ public:
 
 	void GetTestName()
 	{
-		string path = "tests.txt";
-		fstream data;
-		data.open(path, fstream::in | fstream::out | fstream::app);
 		cout << "Get test's name:";
 		getline(cin, name);
+	}
+	void GetCategoryName()
+	{
+		cout << "Get Category name:";
+		getline(cin, Category);
 	}
 
 	void createTest()
 	{
 		string path = "tests.txt";
-		fstream data;
-		data.open(path, fstream::in | fstream::out | fstream::app);
+		ofstream data;
+		//category
+		GetCategoryName();
 		GetTestName();
 		bool continue_ = false;
 		do
@@ -55,12 +59,14 @@ public:
 			cin >> continue_;
 			cin.ignore();
 		} while (continue_);
+
+		data.open(path, fstream::in | fstream::out | fstream::app);    /*"//Category//" + name + ".txt"*/
 		data << this->name << endl;
 		data << this->questions.size() << endl;
 		for (size_t i = 0; i < questions.size(); i++)
 		{
-			data << questions[i];
-			data
+			//data << questions[i].;
+			//data
 		}
 
 		data.close();

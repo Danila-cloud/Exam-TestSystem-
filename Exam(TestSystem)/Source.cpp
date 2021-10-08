@@ -11,13 +11,13 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	file();
+	//file();
 	App app;
-	app.start();
+	app.menu();
 
-	Test t;
-	t.createTest();
-	t.print();
+	//Test t;
+	//t.createTest();
+	//t.print();
 
 	system("pause");
 }
