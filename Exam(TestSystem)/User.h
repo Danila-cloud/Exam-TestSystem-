@@ -17,7 +17,7 @@ protected:
 	Test* test;
 public:
 	virtual void menu() = 0;
-	/*void Register()
+	void Register()
 	{
 
 		cout << "Please, enter your login: " << endl;
@@ -49,9 +49,9 @@ public:
 		string l;
 		while (cin >> l >> p)
 		{
-			if(login==l && hashPass==p)
+			if (login == l && hashPass == p);
 		}
-	}*/
+	}
 };
 
 class Student : public User
@@ -62,7 +62,7 @@ class Student : public User
 		do {
 			system("cls");
 			cout << "Menu Student" << endl;
-			cout << "1.Testing\n2.Register\n3.Exit\n";
+			cout << "1.Testing\n2.Statistic\n3.Exit\n";
 			int c;
 			cin >> c;
 			cin.ignore();
@@ -100,7 +100,7 @@ class Admin : public User
 				createTest();
 				break;
 			case 2:
-				//Register();
+				Register();
 				break;
 			case 3:
 				return;

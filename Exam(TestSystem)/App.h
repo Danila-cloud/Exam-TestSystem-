@@ -62,7 +62,7 @@ public:
 	}
 
 	 void Login()
-	{
+	 {
 		 system("cls");
 		 //user = new Admin();
 		/*user->menu();*/
@@ -95,6 +95,6 @@ public:
 			 }
 		 }
 		 user->menu();
-	}
+	 }
 
 };

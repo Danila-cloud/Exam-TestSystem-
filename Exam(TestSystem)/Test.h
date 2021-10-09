@@ -59,7 +59,7 @@ public:
 			string path = "Categorys.txt";
 			ofstream ca;
 			ca.open("Categorys.txt", ios_base::app);
-			ca << this->Category;
+			ca << this->Category << endl;
 		}
 
 		
@@ -81,7 +81,7 @@ public:
 			cin.ignore();
 		} while (continue_);
 
-		data.open(path, fstream::in | fstream::out | fstream::app);    /*"//Category//" + name + ".txt"*/
+		data.open(this->name + ".txt");
 		data << this->name << endl;
 		data << this->questions.size() << endl;
 		for (size_t i = 0; i < questions.size(); i++)
