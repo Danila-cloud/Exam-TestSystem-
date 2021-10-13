@@ -5,19 +5,22 @@
 #include<fstream>
 #include"FIle.h"
 #include"Test.h"
+#include"Question.h"
 
 using namespace std;
+
+
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	//file();
-	//App app;
-	//app.menu();
+	App app;
+	app.menu();
 
-	Test t;
+	/*Test t;
 	t.createTest();
-	t.print();
+	t.print();*/
 
 	system("pause");
 }

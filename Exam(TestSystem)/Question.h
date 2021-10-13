@@ -3,16 +3,24 @@
 #include<list>
 #include<vector>
 #include<string>
+#include<fstream>
 
 using namespace std;
 
+//ostream& operator<<(ostream& os, const Question& t)
+//{
+//	return os << t.question;
+//}
+
 class Question
 {
+public:
 	string question;
 	vector<string> answers;
 	int numTrueAnswer;
+	friend class Test;
+	//friend ostream& operator<<(ostream& os, const Question& t);
 
-public:
 	//Question() {};
 	void print()
 	{
@@ -35,6 +43,16 @@ public:
 		string answ;
 		getline(cin, answ);
 		answers.push_back(answ);
+	}
+
+	void Save(ofstream& data) {
+		data << question << endl;
+		data << answers.size() << endl;
+		for (size_t i = 0; i < answers.size(); i++)
+		{
+			data << answers[i] << endl;
+		}
+		data << numTrueAnswer << endl;
 	}
 
 	void setNumTrueAnswer()

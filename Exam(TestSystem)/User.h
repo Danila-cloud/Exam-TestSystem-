@@ -56,6 +56,53 @@ public:
 
 class Student : public User
 {
+	void testing()
+	{
+		ifstream in("testName.txt");
+		string testN;
+		vector<string> tn;
+		while (getline(in, testN))
+		{
+			tn.push_back(testN);
+		}
+		in.close();
+		for (size_t i = 0; i < tn.size(); i++)
+		{
+			cout << i + 1 << " " << tn[i] << endl;
+		}
+		int c;
+		cin >> c;
+		cin.ignore();
+		test = new Test;
+		in.open("categorys\\" + tn[c - 1] + ".txt");
+		getline(in, test->name);
+		int lenQ;
+		in >> lenQ;
+		string buff;
+		getline(in, buff);
+		for (size_t i = 0; i < lenQ; i++)
+		{
+			Question q;
+			getline(in, q.question);
+			int lenA;
+			in >> lenA;
+			getline(in, buff);
+			for (size_t i = 0; i < lenA; i++)
+			{
+				string ans;
+				getline(in, ans);
+				q.answers.push_back(ans);
+			}
+			test->questions.push_back(q);
+			in >> q.numTrueAnswer;
+			getline(in, buff);
+		}
+		in.close();
+		
+		test->print();
+		system("pause");
+	}
+
 	void menu()override
 	{
 		
@@ -69,7 +116,7 @@ class Student : public User
 			switch (c)
 			{
 			case 1:
-				//Login();
+				testing();
 				break;
 			case 2:
 				//Register();
