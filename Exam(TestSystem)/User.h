@@ -5,6 +5,7 @@
 #include<vector>
 #include<string>
 #include"Test.h"
+#include"App.h"
 //#include"Question.h"
 
 using namespace std;
@@ -12,11 +13,15 @@ using namespace std;
 class User
 {
 protected:
-	string login;
+
 	int hashPass;
 	Test* test;
+	int mark;
 public:
+	string login;
 	virtual void menu() = 0;
+
+
 	void Register()
 	{
 
@@ -56,11 +61,14 @@ public:
 
 class Student : public User
 {
+
+
 	void testing()
 	{
 		ifstream in("testName.txt");
 		string testN;
 		vector<string> tn;
+		int TrueAnswers = 0;
 		while (getline(in, testN))
 		{
 			tn.push_back(testN);
@@ -80,6 +88,9 @@ class Student : public User
 		in >> lenQ;
 		string buff;
 		getline(in, buff);
+
+
+		system("cls");
 		for (size_t i = 0; i < lenQ; i++)
 		{
 			Question q;
@@ -96,11 +107,41 @@ class Student : public User
 			test->questions.push_back(q);
 			in >> q.numTrueAnswer;
 			getline(in, buff);
+
+			test->print();
+
+			cout << endl << "Please, enter " << i+1 << " answer: ";
+
+			int answer;
+			cin >> answer;
+			if (answer == q.numTrueAnswer) TrueAnswers++;
+
+			system("cls");
 		}
 		in.close();
 		
-		test->print();
+		mark = (12 / test->questions.size()) * TrueAnswers;
+		cout << "Your MARK is: " << mark << endl;
+
+
+
 		system("pause");
+	}
+
+	void Statistic()
+	{
+		ofstream Stat("Stats\\" + login + ".txt");
+		/*while (Stat>>mark)
+		{
+			cout << mark << endl;
+		}*/
+		/*Stat >> test->name;
+		cout << test->name;
+		cout << endl;
+		Stat >> this->mark;
+		cout << mark;
+		cout << endl;*/
+		Stat.close();
 	}
 
 	void menu()override
@@ -119,7 +160,7 @@ class Student : public User
 				testing();
 				break;
 			case 2:
-				//Register();
+				Statistic();
 				break;
 			case 3:
 				return;

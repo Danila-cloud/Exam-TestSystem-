@@ -1,0 +1,12 @@
+Computer
+2
+Proc
+2
+mozg
+nemozg
+1
+operativka
+2
+kalculator
+plata
+2

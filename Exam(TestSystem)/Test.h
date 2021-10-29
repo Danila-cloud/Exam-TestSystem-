@@ -16,8 +16,6 @@ public:
 	string Category;
 	string name;
 	vector<Question> questions;
-	friend Question;
-
 
 	Test() {}
 	Question addQuestion()
@@ -71,7 +69,6 @@ public:
 	}
 
 
-
 	void createTest()
 	{
 		ofstream data;
@@ -99,16 +96,12 @@ public:
 		data.close();
 	}
 
-	void PassTest()
-	{
-
-	}
-
 	void print()
 	{
 		cout << "Test's name: " << this->name << endl;
 		for (size_t i = 0; i < questions.size(); i++)
 		{
+			cout << endl << i+1 << " Question: ";
 			questions[i].print();
 			cout << endl;
 		}

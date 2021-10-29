@@ -7,6 +7,7 @@
 #include"User.h"
 #include"Test.h"
 #include<string>
+#include<conio.h>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ class App
 	//map<int, Test> tests;
 
 public:
+
 	void Register()
 	{
 		system("cls");
@@ -26,7 +28,19 @@ public:
 		cout << "Enter your password: " << endl;
 		string pa;
 		hash<string> Pass;
-		getline(cin, pa);
+		int c = 0;
+		do
+		{
+			c = _getch();
+			if (c != 13)
+			{
+				pa += c;
+				cout << "*";
+			}
+
+
+
+		} while (c != 13);
 		int hashPass = Pass(pa);
 		ofstream out;
 		out.open("Accounts.txt", ios_base::app);
@@ -72,7 +86,19 @@ public:
 		 cout << "Enter your password: " << endl;
 		 string pa;
 		 hash<string> Pass;
-		 getline(cin, pa);
+		 int c = 0;
+		 do
+		 {
+			 c = _getch();
+			 if (c != 13)
+			 {
+				 pa += c;
+				 cout << "*";
+			 }
+
+
+
+		 } while (c != 13);
 		 int hashPass = Pass(pa);
 		 ifstream in;
 		 in.open("Accounts.txt");
@@ -94,6 +120,7 @@ public:
 				 break;
 			 }
 		 }
+		 user->login = login;
 		 user->menu();
 	 }
 
