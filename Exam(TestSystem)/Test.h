@@ -45,7 +45,7 @@ public:
 		getline(cin, Category);
 		string path = "Categorys.txt";
 		ifstream ca;
-		ca.open(path);
+		ca.open(path, ios_base::app);
 		string categ;
 		int h = 0;
 		while (!ca.eof())

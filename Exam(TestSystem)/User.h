@@ -124,24 +124,34 @@ class Student : public User
 		cout << "Your MARK is: " << mark << endl;
 
 
+		ofstream Stat("Stats\\" + login + ".txt", ios_base::app);
+		Stat << test->name << endl;
+		Stat << mark << endl;
+		Stat << endl;
+		Stat.close();
+
+
 
 		system("pause");
 	}
 
 	void Statistic()
 	{
-		ofstream Stat("Stats\\" + login + ".txt");
-		/*while (Stat>>mark)
+
+		system("cls");
+		cout << "Your STATISTIC: " << endl;
+		string path = "Stats\\" + login + ".txt";
+		ifstream Stat;
+		Stat.open(path);
+		char result;
+		while (Stat.get(result))
 		{
-			cout << mark << endl;
-		}*/
-		/*Stat >> test->name;
-		cout << test->name;
-		cout << endl;
-		Stat >> this->mark;
-		cout << mark;
-		cout << endl;*/
+			cout << result;
+		}
 		Stat.close();
+
+
+		system("pause");
 	}
 
 	void menu()override
@@ -178,7 +188,7 @@ class Admin : public User
 		do {
 			system("cls");
 			cout << "Menu Admin" << endl;
-			cout << "1.Create test\n2.Register\n3.Exit\n";
+			cout << "1.Create test\n2.Register\n3.Statistic\n4.Exit\n";
 			int c;
 			cin >> c;
 			cin.ignore();
@@ -191,6 +201,9 @@ class Admin : public User
 				Register();
 				break;
 			case 3:
+				AdminStatistic();
+				break;
+			case 4:
 				return;
 			default:
 				break;
@@ -203,4 +216,51 @@ class Admin : public User
 		test->createTest();
 	}
 
+	void AdminStatistic()
+	{
+		system("cls");
+		string path = "logins.txt";
+		ifstream name;
+		name.open(path);
+		string log;
+		vector<string> logins;
+		while (!name.eof())
+		{
+			getline(name, login);
+			logins.push_back(login);
+			
+		}
+		name.close();
+		for (size_t i = 0; i < logins.size(); i++)
+		{
+
+			cout << i+1 << "." << logins[i] << endl;
+		}
+
+		cout << "Please, choise user: " << endl;
+		int ch;
+		cin >> ch;
+		/*do
+		{
+			cout << "Please, choise user: " << endl;
+			int ch;
+			cin >> ch;
+
+		} while (!ch > logins.size() || ch < 1);*/
+		
+		ch = ch - 1;
+		system("cls");
+		cout << "Statistic this user: " << endl;
+		string way = "Stats\\" + logins[ch] + ".txt";
+		ifstream Stat;
+		Stat.open(way);
+		char result;
+		while (Stat.get(result))
+		{
+			cout << result;
+		}
+		Stat.close();
+
+		system("pause");
+	}
 };

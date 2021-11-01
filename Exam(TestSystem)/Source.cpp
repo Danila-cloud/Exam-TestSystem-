@@ -14,13 +14,8 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	//file();
 	App app;
 	app.menu();
-
-	/*Test t;
-	t.createTest();
-	t.print();*/
 
 	system("pause");
 }

@@ -8,6 +8,7 @@
 #include"Test.h"
 #include<string>
 #include<conio.h>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -25,6 +26,23 @@ public:
 		string login;
 		cout << "Please, enter your login: " << endl;
 		getline(cin, login);
+		string path = "logins.txt";
+		ifstream name;
+		name.open(path);
+		string log;
+		while (!name.eof())
+		{
+			string Verify;
+			getline(name, Verify);
+			if (Verify == login)
+			{
+				cout << "This Login is busy!!!" << endl;
+				exit(1);
+			}
+
+
+		}
+		name.close();
 		cout << "Enter your password: " << endl;
 		string pa;
 		hash<string> Pass;
@@ -48,6 +66,11 @@ public:
 		out << hashPass << endl;
 		out.close();
 
+
+		ofstream lo;
+		lo.open("Logins.txt", ios_base::app);
+		lo <<endl<< login;
+		lo.close();
 	}
 
 	void menu()
@@ -119,6 +142,14 @@ public:
 				 in.close();
 				 break;
 			 }
+			/* else if (login != l) {
+				 cout << endl << "Login is Incorect!!!" << endl;
+				 exit(1);
+			 }
+			 else if (hashPass != p) {
+				 cout << endl <<  "Password is Incorect!!!" << endl;
+				 exit(1);
+			 }*/
 		 }
 		 user->login = login;
 		 user->menu();
